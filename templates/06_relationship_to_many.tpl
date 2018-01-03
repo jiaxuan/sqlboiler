@@ -32,7 +32,7 @@ func (o *{{$txt.LocalTable.NameGo}}) {{$txt.Function.Name}}(exec boil.Executor, 
 	)
 		{{end}}
 
-	query := {{$txt.ForeignTable.NamePluralGo}}(exec, queryMods...)
+	query := {{$txt.ForeignTable.NamePluralGo}}All(exec, queryMods...)
 	queries.SetFrom(query.Query, "{{$schemaForeignTable}}")
 
 	if len(queries.GetSelect(query.Query)) == 0 {

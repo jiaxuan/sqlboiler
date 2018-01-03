@@ -2,6 +2,7 @@
 package bdb
 
 import (
+	"fmt"
 	"sort"
 
 	"github.com/pkg/errors"
@@ -51,9 +52,11 @@ func Tables(db Interface, schema string, whitelist, blacklist []string) ([]Table
 	}
 
 	sort.Strings(names)
+	cnt := len(names)
 
 	var tables []Table
-	for _, name := range names {
+	for i, name := range names {
+		fmt.Printf("[%d/%d] %s\n", i+1, cnt, name)
 		t := Table{
 			Name: name,
 		}
@@ -99,7 +102,7 @@ func filterForeignKeys(t *Table, whitelist, blacklist []string) {
 	var fkeys []ForeignKey
 	for _, fkey := range t.FKeys {
 		if (len(whitelist) == 0 || strmangle.SetInclude(fkey.ForeignTable, whitelist)) &&
-		(len(blacklist) == 0 || !strmangle.SetInclude(fkey.ForeignTable, blacklist)) {
+			(len(blacklist) == 0 || !strmangle.SetInclude(fkey.ForeignTable, blacklist)) {
 			fkeys = append(fkeys, fkey)
 		}
 	}

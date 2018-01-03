@@ -177,48 +177,50 @@ func QuoteCharacter(q byte) string {
 
 // Plural converts singular words to plural words (eg: person to people)
 func Plural(name string) string {
-	buf := GetBuffer()
-	defer PutBuffer(buf)
+	return name
+	// buf := GetBuffer()
+	// defer PutBuffer(buf)
 
-	splits := strings.Split(name, "_")
+	// splits := strings.Split(name, "_")
 
-	for i := 0; i < len(splits); i++ {
-		if i != 0 {
-			buf.WriteByte('_')
-		}
+	// for i := 0; i < len(splits); i++ {
+	// 	if i != 0 {
+	// 		buf.WriteByte('_')
+	// 	}
 
-		if i == len(splits)-1 {
-			buf.WriteString(boilRuleset.Pluralize(splits[len(splits)-1]))
-			break
-		}
+	// 	if i == len(splits)-1 {
+	// 		buf.WriteString(boilRuleset.Pluralize(splits[len(splits)-1]))
+	// 		break
+	// 	}
 
-		buf.WriteString(splits[i])
-	}
+	// 	buf.WriteString(splits[i])
+	// }
 
-	return buf.String()
+	// return buf.String()
 }
 
 // Singular converts plural words to singular words (eg: people to person)
 func Singular(name string) string {
-	buf := GetBuffer()
-	defer PutBuffer(buf)
+	return name
+	// buf := GetBuffer()
+	// defer PutBuffer(buf)
 
-	splits := strings.Split(name, "_")
+	// splits := strings.Split(name, "_")
 
-	for i := 0; i < len(splits); i++ {
-		if i != 0 {
-			buf.WriteByte('_')
-		}
+	// for i := 0; i < len(splits); i++ {
+	// 	if i != 0 {
+	// 		buf.WriteByte('_')
+	// 	}
 
-		if i == len(splits)-1 {
-			buf.WriteString(boilRuleset.Singularize(splits[len(splits)-1]))
-			break
-		}
+	// 	if i == len(splits)-1 {
+	// 		buf.WriteString(boilRuleset.Singularize(splits[len(splits)-1]))
+	// 		break
+	// 	}
 
-		buf.WriteString(splits[i])
-	}
+	// 	buf.WriteString(splits[i])
+	// }
 
-	return buf.String()
+	// return buf.String()
 }
 
 // titleCaseCache holds the mapping of title cases.
